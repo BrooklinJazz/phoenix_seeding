@@ -1,6 +1,7 @@
 defmodule Seed.Accounts.Author do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Seed.Posts.Post
 
   @derive {Inspect, except: [:password]}
   schema "authors" do
@@ -8,6 +9,7 @@ defmodule Seed.Accounts.Author do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
+    # has_many :posts, Post
 
     timestamps()
   end

@@ -66,6 +66,12 @@ defmodule SeedWeb.Router do
     get "/authors/settings/confirm_email/:token", AuthorSettingsController, :confirm_email
   end
 
+  scope "/posts", SeedWeb do
+    pipe_through [:browser]
+
+    resources "/", PostController
+  end
+
   scope "/", SeedWeb do
     pipe_through [:browser]
 
