@@ -3,9 +3,21 @@ defmodule Blog.PostsTest do
 
   alias Blog.Posts
   use Blog.PostsFixture
+  import Blog.Factory
 
   describe "posts" do
     alias Blog.Posts.Post
+
+    test "list_posts/0 returns all posts _ using ex_machina" do
+      post0 = insert(:post)
+      post1 = insert(:post)
+      post2 = insert(:post)
+      post3 = insert(:post)
+      post4 = insert(:post)
+      post5 = insert(:post)
+      post6 = insert(:long_post)
+      assert Posts.list_posts() == [post0, post1, post2, post3, post4, post5, post6]
+    end
 
     test "list_posts/0 returns all posts" do
       post = post_fixture()

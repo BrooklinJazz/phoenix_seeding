@@ -12,15 +12,8 @@
 
 alias Blog.Repo
 alias Blog.Posts
-alias Blog.Posts.Post
+alias Faker.Lorem
 
-Repo.delete_all(Post)
-
-if Mix.env() == :dev do
-  Posts.create_post(%{title: Faker.Lorem.sentence(5), content: Faker.Lorem.paragraph(5)})
-end
-
-if Mix.env() == :test do
-  # Posts.create_post(%{title: Faker.Lorem.sentence(4..10), content: Faker.Lorem.paragraph(1)})
-  IO.puts("BLOCKING SEED FILE FOR TEST ENVIRONMENT TO AVOID FAILING TESTS")
+for _ <- 1..5 do
+  Posts.create_post(%{title: Lorem.sentence(4..12), content: Lorem.paragraphs(4..20) |> Enum.join("\n")})
 end
