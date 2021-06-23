@@ -1,5 +1,5 @@
-defmodule Seed.PostsFixture do
-  alias Seed.Posts
+defmodule Blog.PostsFixture do
+  alias Blog.Posts
 
   defmacro __using__([]) do
     quote do

@@ -1,7 +1,7 @@
-defmodule Seed.AccountsFixtures do
+defmodule Blog.AccountsFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `Seed.Accounts` context.
+  entities via the `Blog.Accounts` context.
   """
 
   def unique_author_email, do: "author#{System.unique_integer()}@example.com"
@@ -18,7 +18,7 @@ defmodule Seed.AccountsFixtures do
     {:ok, author} =
       attrs
       |> valid_author_attributes()
-      |> Seed.Accounts.register_author()
+      |> Blog.Accounts.register_author()
 
     author
   end

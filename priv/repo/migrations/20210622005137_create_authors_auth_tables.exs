@@ -1,4 +1,4 @@
-defmodule Seed.Repo.Migrations.CreateAuthorsAuthTables do
+defmodule Blog.Repo.Migrations.CreateAuthorsAuthTables do
   use Ecto.Migration
 
   def change do

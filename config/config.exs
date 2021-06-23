@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :seed,
-  ecto_repos: [Seed.Repo]
+config :blog,
+  ecto_repos: [Blog.Repo]
 
 # Configures the endpoint
-config :seed, SeedWeb.Endpoint,
+config :blog, BlogWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "1ucVBCc47fyZfB72wuLb4Wjc3Y7ck/cn68Pl+fEDnjkXUbN5EdigioyVyqDrmaeC",
-  render_errors: [view: SeedWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Seed.PubSub,
+  render_errors: [view: BlogWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Blog.PubSub,
   live_view: [signing_salt: "A4igshSd"]
 
 # Configures Elixir's Logger

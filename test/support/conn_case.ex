@@ -1,4 +1,4 @@
-defmodule SeedWeb.ConnCase do
+defmodule BlogWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule SeedWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use SeedWeb.ConnCase, async: true`, although
+  by setting `use BlogWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,20 +22,20 @@ defmodule SeedWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import SeedWeb.ConnCase
+      import BlogWeb.ConnCase
 
-      alias SeedWeb.Router.Helpers, as: Routes
+      alias BlogWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint SeedWeb.Endpoint
+      @endpoint BlogWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Seed.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Blog.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Seed.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Blog.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
@@ -50,7 +50,7 @@ defmodule SeedWeb.ConnCase do
   test context.
   """
   def register_and_log_in_author(%{conn: conn}) do
-    author = Seed.AccountsFixtures.author_fixture()
+    author = Blog.AccountsFixtures.author_fixture()
     %{conn: log_in_author(conn, author), author: author}
   end
 
@@ -60,7 +60,7 @@ defmodule SeedWeb.ConnCase do
   It returns an updated `conn`.
   """
   def log_in_author(conn, author) do
-    token = Seed.Accounts.generate_author_session_token(author)
+    token = Blog.Accounts.generate_author_session_token(author)
 
     conn
     |> Phoenix.ConnTest.init_test_session(%{})

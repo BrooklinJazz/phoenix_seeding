@@ -1,9 +1,9 @@
-defmodule Seed.MixProject do
+defmodule Blog.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :seed,
+      app: :blog,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Seed.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Seed.Application, []},
+      mod: {Blog.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

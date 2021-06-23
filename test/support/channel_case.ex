@@ -1,4 +1,4 @@
-defmodule SeedWeb.ChannelCase do
+defmodule BlogWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule SeedWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use SeedWeb.ChannelCase, async: true`, although
+  by setting `use BlogWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule SeedWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import SeedWeb.ChannelCase
+      import BlogWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint SeedWeb.Endpoint
+      @endpoint BlogWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Seed.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Blog.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Seed.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Blog.Repo, {:shared, self()})
     end
 
     :ok
